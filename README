@@ -97,6 +97,49 @@ Thư mục web đã bao gồm các tệp HTML, CSS và JavaScript. Không cần 
 
 - Dự đoán giá trị Y: Nhập một giá trị X cần dự đoán và nhấn "Dự đoán". Mô hình sẽ trả về giá trị Y dự đoán, cùng với mô hình tốt nhất và sai số RMSE.
 
+### Hướng dẫn kiểm thử
+
+- Trong dự án này, tệp test.py chứa các bài kiểm thử cho phần backend của chương trình. Các kiểm thử này kiểm tra tính chính xác và hiệu suất của các mô hình hồi quy được sử dụng trong chương trình.
+
+#### Các kiểm thử chính:
+
+1. Kiểm thử mô hình hồi quy tuyến tính:
+
+- Đảm bảo rằng mô hình có thể học và dự đoán giá trị Y từ giá trị X một cách chính xác.
+
+- Đo lường sai số RMSE (Root Mean Square Error) để đánh giá hiệu suất.
+
+2. Kiểm thử mô hình Random Forest:
+
+- Kiểm tra việc huấn luyện và dự đoán của mô hình Random Forest.
+
+- So sánh kết quả dự đoán với mô hình hồi quy tuyến tính để xác định mô hình tốt hơn.
+
+3. Kiểm thử mô hình Support Vector Regressor (SVR):
+
+- Đảm bảo mô hình SVR có thể dự đoán chính xác và so sánh với các mô hình khác.
+
+4. Kiểm thử kết hợp mô hình (Ensemble Learning):
+
+- Kiểm tra cách các mô hình khác nhau được kết hợp để tạo ra một dự đoán cuối cùng.
+
+- Đảm bảo rằng mô hình ensemble hoạt động tốt hơn một mô hình đơn lẻ bằng cách giảm thiểu sai số.
+
+#### Chạy các bài kiểm thử:
+
+Để chạy các bài kiểm thử, bạn có thể thực hiện như sau:
+
+- Đảm bảo rằng bạn đã cài đặt tất cả các thư viện cần thiết:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+- Chạy tệp kiểm thử:
+
+    ```bash
+    python backend/test.py
+    ```
 
 ### Chạy ứng dụng
 
@@ -119,3 +162,4 @@ Thư mục web đã bao gồm các tệp HTML, CSS và JavaScript. Không cần 
 ### Tạo biểu đồ
 
 - Dữ liệu X và Y sẽ được vẽ dưới dạng biểu đồ scatter. Mỗi điểm trong biểu đồ tương ứng với một cặp giá trị X và Y. Bạn có thể thêm nhiễu vào dữ liệu Y để mô phỏng các điều kiện thực tế trong quá trình huấn luyện mô hình.
+
