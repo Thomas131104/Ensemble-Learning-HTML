@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương trình hồi quy Ensemble Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+
+
+<body>
+
+    <header>
+        <h1>Chương trình hồi quy Ensemble Learning</h1>
+        <br>
+    </header>
+
+    <main>
+        <!--Nhập-->
+        <div id="scatterController" ng-controller="scatterPlotController">
+            <form>
+                <label for="x-plot">Các giá trị X: </label>
+                <input type="text" id="x-plot" ng-model="xPlot">
+                
+                <label for="y-plot">Các giá trị Y: </label>
+                <input type="text" id="y-plot" ng-model="yPlot">
+                
+                <label for="noise">Chọn chế độ:</label>
+                <label>
+                    <input type="radio" name="noise" value="noNoise" ng-model="noiseSelection" ng-checked="true"> Không có nhiễu
+                </label>
+                <label>
+                    <input type="radio" name="noise" value="withNoise" ng-model="noiseSelection"> Có nhiễu
+                </label>
+            
+                <label for="noiseValue">Mức độ nhiễu (Sai số):</label>
+                <input type="number" ng-model="noiseLevel" placeholder="Nhập mức độ nhiễu" min="0" ng-disabled="noiseSelection === 'noNoise'">
+                
+                <button type="button" ng-click="processData()">OK!</button>
+            </form>
+
+            <!-- Hiển thị giá trị nhập vào -->
+            <div>
+                <p>Danh sách theo x: {{ xPlot }}</p>
+                <p>Danh sách theo y: {{ yPlot }}</p>
+            </div>
+        </div>
+        <br>
+
+
+        <!--Đồ thị-->
+        <canvas id="myScatterChart" width="600" height="800"></canvas>
+        <br>
+        <br>
+
+
+        <!--Dự đoán-->
+        <div ng-controller="predictionController" class="prediction-container">
+            <div class="input-section">
+                <label for="x-predict" class="input-label">Nhập X cần dự đoán (Chỉ nhập 1 giá trị):</label>
+                <div class="input-wrapper">
+                    <input type="text" id="x-predict" ng-model="xPredict" class="input-field">
+                    <button ng-click="predictValues()" class="predict-btn">Dự đoán</button>
+                </div>
+            </div>
+        
+            <div class="result-section">
+                <h3 class="result-title">Giá trị Y dự đoán:</h3>
+        
+                <!-- Hiển thị Y dự đoán khi giá trị có sẵn -->
+                <p class="result-item"><strong>Y dự đoán:</strong> 
+                    <span ng-show="best_Y0 !== undefined" class="result-value">{{ best_Y0 || 'Chưa có dữ liệu' }}</span>
+                </p>
+        
+                <!-- Hiển thị Mô hình tốt nhất khi giá trị có sẵn -->
+                <p class="result-item"><strong>Mô hình tốt nhất:</strong> 
+                    <span ng-show="best_model !== undefined" class="result-value">{{ best_model || 'Chưa có dữ liệu' }}</span>
+                </p>
+        
+                <!-- Hiển thị Sai số RMSE khi giá trị có sẵn -->
+                <p class="result-item"><strong>Sai số RMSE:</strong> 
+                    <span ng-if="min_rmse !== null" class="result-value">{{ min_rmse }}</span>
+                    <span ng-if="min_rmse === null" class="result-value">Chưa có dữ liệu</span>
+                </p>
+            </div>
+        </div>
+        <br>
+        
+        <script type="text/javascript" src="app.js"></script>
+    </main>
+
+
+    <footer>
+        <br>
+        <p>&copy; by Musgramming</p>
+    </footer>
+
+</body>
+</html>

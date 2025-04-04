@@ -1,0 +1,20 @@
+# Loại bỏ thư mục pycache
+/backend/__pycache__/
+
+# Loại bỏ thư mục môi trường ảo
+/venv/
+
+# Loại bỏ tệp cấu hình của IDE
+.vscode/
+/.idea/
+
+# Loại bỏ tệp log và tạm thời
+*.log
+*.tmp
+
+# Loại bỏ tệp hệ thống macOS
+.DS_Store
+
+# Loại bỏ các tệp .pyc, .pyo
+*.pyc
+*.pyo

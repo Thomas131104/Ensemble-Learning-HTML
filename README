@@ -1,0 +1,121 @@
+# Chương trình hồi quy Ensemble Learning
+
+### Mô tả
+
+Chương trình hồi quy Ensemble Learning sử dụng phương pháp học máy để dự đoán giá trị Y từ một giá trị X cho trước. Ensemble Learning là một kỹ thuật học máy trong đó nhiều mô hình được kết hợp để cải thiện hiệu suất dự đoán so với việc chỉ sử dụng một mô hình duy nhất. Các mô hình khác nhau được huấn luyện và dự đoán giá trị Y cho dữ liệu đầu vào, và kết quả cuối cùng sẽ được lấy từ việc kết hợp các dự đoán này, giúp giảm thiểu sai số và tăng độ chính xác.
+
+Chương trình này sử dụng một số mô hình hồi quy khác nhau, như Hồi quy tuyến tính, Random Forest, và Support Vector Regressor, để thực hiện dự đoán. Sau khi huấn luyện và dự đoán, mô hình với sai số RMSE thấp nhất sẽ được chọn làm mô hình tốt nhất.
+
+### Thành phần dự án
+
+1. **Frontend**: Được xây dựng bằng AngularJS và HTML/CSS. Chịu trách nhiệm giao diện người dùng và tương tác với backend.
+
+2. **Backend**: Sử dụng Python và thư viện Eel để kết nối frontend với backend. Phần backend chứa logic để xử lý dữ liệu và tính toán dự đoán.
+
+### Cấu trúc thư mục
+
+```
+├── app.py # Tệp chính của ứng dụng, kết nối frontend và backend 
+|
+├── requirements.txt # Tệp chứa các thư viện cần thiết
+|
+├── web # Thư mục chứa các tệp frontend 
+│   │ 
+|   ├── index.html # Tệp HTML chứa giao diện người dùng 
+|   │ 
+|   ├── style.css # Tệp CSS cho giao diện 
+|   │ 
+|   └── app.js # Tệp JavaScript xử lý logic frontend 
+└── backend # Thư mục chứa các tệp backend (model.py)
+    |
+    ├── model.py # Tệp chứa logic hồi quy
+    │ 
+    └── test.py # Tệp chứa các bài kiểm thử
+```
+
+### Cơ chế hoạt động
+
+Ứng dụng này được thiết kế để thực hiện hồi quy với phương pháp Ensemble Learning. Cơ chế hoạt động của ứng dụng gồm 3 phần chính:
+
+1. Giao Diện Người Dùng (Frontend):
+
+- Người dùng nhập các giá trị X và Y vào các ô input.
+
+- Có thể lựa chọn thêm nhiễu vào dữ liệu và điều chỉnh mức độ nhiễu.
+
+- Sau khi nhập dữ liệu, ứng dụng vẽ biểu đồ scatter để người dùng có thể quan sát mối quan hệ giữa X và Y.
+
+- Người dùng cũng có thể nhập một giá trị X mới để dự đoán giá trị Y tương ứng.
+
+2. Xử lý Dữ Liệu (Backend):
+
+- Backend sử dụng Python và các mô hình hồi quy khác nhau để dự đoán giá trị Y từ giá trị X.
+
+- Các mô hình hồi quy này được huấn luyện riêng biệt và sau đó dự đoán kết quả. Kết quả cuối cùng được tính toán từ việc kết hợp các dự đoán của tất cả các mô hình thông qua Ensemble Learning.
+
+- Dữ liệu được gửi từ frontend tới backend thông qua thư viện Eel.
+
+3. Kết Nối giữa Frontend và Backend:
+
+- Eel được sử dụng để kết nối frontend (giao diện người dùng HTML/JavaScript) với backend (xử lý Python).
+
+- Backend nhận dữ liệu từ frontend và gửi kết quả trở lại cho frontend để hiển thị.
+
+### Cài đặt Backend
+
+1. Cài đặt các thư viện cần thiết:
+
+- Cài đặt trực tiếp từ dòng lệnh:
+
+   ```bash
+   pip install eel numpy scikit-learn
+   ```
+
+- Hoặc cài đặt các thư viện cần thiết từ tệp requirements.txt
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2. Chạy ứng dụng backend bằng cách chạy tệp app.py:
+
+    ```bash
+    python app.py
+    ```
+
+### Cài đặt Frontend
+
+Thư mục web đã bao gồm các tệp HTML, CSS và JavaScript. Không cần cài đặt thêm gì cho frontend. Khi bạn chạy backend, frontend sẽ tự động được mở ra trong trình duyệt.
+
+### Hướng dẫn sử dụng
+
+- Nhập dữ liệu: Người dùng nhập các giá trị X và Y vào các ô nhập liệu tương ứng trong giao diện frontend.
+
+- Chọn chế độ nhiễu: Người dùng có thể chọn chế độ có hoặc không có nhiễu và điều chỉnh mức độ nhiễu.
+
+- Chạy mô hình: Nhấn nút "OK!" để xử lý dữ liệu. Biểu đồ scatter sẽ được vẽ để hiển thị các giá trị X và Y.
+
+- Dự đoán giá trị Y: Nhập một giá trị X cần dự đoán và nhấn "Dự đoán". Mô hình sẽ trả về giá trị Y dự đoán, cùng với mô hình tốt nhất và sai số RMSE.
+
+
+### Chạy ứng dụng
+
+1. Mở tệp app.py và chạy:
+
+    ```bash
+    python app.py
+    ```
+
+2. Ứng dụng sẽ tự động mở một cửa sổ trình duyệt với giao diện người dùng.
+
+### Công nghệ sử dụng
+
+- Frontend: AngularJS, HTML5, CSS3
+
+- Backend: Python, Eel, Numpy, Scikit-learn
+
+- Biểu đồ: Chart.js
+
+### Tạo biểu đồ
+
+- Dữ liệu X và Y sẽ được vẽ dưới dạng biểu đồ scatter. Mỗi điểm trong biểu đồ tương ứng với một cặp giá trị X và Y. Bạn có thể thêm nhiễu vào dữ liệu Y để mô phỏng các điều kiện thực tế trong quá trình huấn luyện mô hình.
