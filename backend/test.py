@@ -72,6 +72,7 @@ class TestMainProgram(unittest.TestCase):
         result = main_program(X, Y, X0)
         self.assertIsNotNone(result, "Kết quả không hợp lệ")
 
+
     # Test Case 8: Dữ liệu có mối quan hệ mạnh với nhiễu (Strong Relationship with Noise)
     def test_case8(self):
         X = np.arange(0, 1000, 0.1).reshape(-1, 1)
